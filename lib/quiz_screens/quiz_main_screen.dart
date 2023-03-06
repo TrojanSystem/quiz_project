@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../quiz_widgets/quiz_category.dart';
 import '../quiz_widgets/quiz_category_view_all.dart';
+import '../quiz_widgets/quiz_center_screen.dart';
 import '../quiz_widgets/quiz_user_profile.dart';
 
 class QuizMainScreen extends StatelessWidget {
@@ -29,21 +30,12 @@ class QuizMainScreen extends StatelessWidget {
                 QuizCategory(),
               ],
             ),
-            Positioned(
-              top: deviceWidth * 0.3,
-              left: deviceWidth * 0.1,
-              child: Container(
-                width: deviceWidth * 0.8,
-                height: deviceHeight * 0.3,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(25),
-                  color: Colors.black,
-                ),
-              ),
-            )
+            QuizCenterScreen(deviceWidth: deviceWidth, deviceHeight: deviceHeight)
           ],
         ),
       ),
     );
   }
 }
+
+

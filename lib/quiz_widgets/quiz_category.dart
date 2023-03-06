@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import 'package:quiz_project/sub_screens/quiz_selected_category.dart';
 
 class QuizCategory extends StatelessWidget {
   QuizCategory({
@@ -12,12 +13,28 @@ class QuizCategory extends StatelessWidget {
     double _h = MediaQuery.of(context).size.height;
     int columnCount = 3;
     List category = [
-      {'category': 'mathematics.png', 'title': 'Math'},
-      {'category': 'chemistry.png', 'title': 'Science'},
-      {'category': 'theatre-mask.png', 'title': 'Drama'},
-      {'category': 'paint-palette.png', 'title': 'Art & Craft'},
-      {'category': 'book (1).png', 'title': 'Knowledge'},
-      {'category': 'languages.png', 'title': 'Languages'}
+      {
+        'category': 'mathematics.png',
+        'title': 'Math',
+        'tag': 'Mathematics Quiz'
+      },
+      {'category': 'chemistry.png', 'title': 'Science', 'tag': 'Science Quiz'},
+      {'category': 'theatre-mask.png', 'title': 'Drama', 'tag': 'Drama Quiz'},
+      {
+        'category': 'paint-palette.png',
+        'title': 'Art & Craft',
+        'tag': 'Art Quiz'
+      },
+      {
+        'category': 'book (1).png',
+        'title': 'Knowledge',
+        'tag': 'General Knowledge Quiz'
+      },
+      {
+        'category': 'languages.png',
+        'title': 'Languages',
+        'tag': 'Languages Quiz'
+      }
     ];
     return Expanded(
       flex: 3,
@@ -28,7 +45,6 @@ class QuizCategory extends StatelessWidget {
           padding: EdgeInsets.all(_w / 60),
           crossAxisCount: columnCount,
           children: List.generate(
-
             6,
             (int index) {
               return AnimationConfiguration.staggeredGrid(
@@ -40,7 +56,15 @@ class QuizCategory extends StatelessWidget {
                   curve: Curves.fastLinearToSlowEaseIn,
                   child: FadeInAnimation(
                     child: GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (ctx) => QuizSelectedCategory(
+                              selectedQuizTag: category[index]['tag'],
+                            ),
+                          ),
+                        );
+                      },
                       child: Container(
                         margin: EdgeInsets.only(
                             bottom: _w / 30, left: _w / 60, right: _w / 60),

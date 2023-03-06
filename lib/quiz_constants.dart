@@ -9,3 +9,11 @@ const kkCategory = TextStyle(
   fontWeight: FontWeight.w900,
   fontSize: 20,
 );
+const kkActiveQuestionNumber = TextStyle(
+  color: Colors.white,
+  fontSize: 25,
+);
+const kkInActiveQuestionNumber = TextStyle(
+  color: Colors.white60,
+  fontSize: 25,
+);
