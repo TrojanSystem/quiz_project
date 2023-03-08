@@ -1,8 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:line_icons/line_icons.dart';
+
 import 'package:quiz_project/quiz_constants.dart';
-Expanded selectedQuizHeader(double width, double height) {
+
+Widget answer({answerColor, width, height}) => Container(
+      margin: const EdgeInsets.all(2.0),
+      color: answerColor,
+      width: width * 0.03,
+      height: height * 0.09,
+    );
+
+Widget selectedQuizHeader(
+    {required double width,
+    required double height,
+    required question,
+    required currentQuestion,
+    required currentQuestionIndex}) {
   return Expanded(
     flex: 2,
     child: Column(
@@ -22,18 +34,18 @@ Expanded selectedQuizHeader(double width, double height) {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: RichText(
-                text: const TextSpan(
+                text: TextSpan(
                   children: [
                     TextSpan(
-                      text: '06',
+                      text: '${currentQuestion + 1}',
                       style: kkActiveQuestionNumber,
                     ),
-                    TextSpan(
+                    const TextSpan(
                       text: '/',
                       style: kkInActiveQuestionNumber,
                     ),
                     TextSpan(
-                      text: '20',
+                      text: '${question.length}',
                       style: kkInActiveQuestionNumber,
                     ),
                   ],
@@ -43,17 +55,18 @@ Expanded selectedQuizHeader(double width, double height) {
           ],
         ),
         Container(
-          margin: const EdgeInsets.only(top: 10,left: 16),
+          margin: const EdgeInsets.only(top: 10, left: 16),
           width: width,
           height: height * 0.01,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) => answer(
-              answerColor: Colors.red,
+              answerColor:
+                  currentQuestionIndex == index ? Colors.white60 : Colors.red,
               width: width,
               height: height,
             ),
-            itemCount: 20,
+            itemCount: question.length,
           ),
         )
       ],

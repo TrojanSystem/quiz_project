@@ -28,6 +28,8 @@ class QuizCategoryViewAll extends StatelessWidget {
             ),
           ),
           QuizButtons(
+            textColor:  const Color.fromRGBO(6, 209, 243, 1),
+            bgColor: const Color.fromRGBO(6, 209, 243, 0.2),
             deviceWidth: deviceWidth,
             deviceHeight: deviceHeight,
             buttonFunction: () {},

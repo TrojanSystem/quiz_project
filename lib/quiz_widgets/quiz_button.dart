@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
+
 class QuizButtons extends StatelessWidget {
   const QuizButtons(
       {super.key,
-        required this.deviceWidth,
-        required this.deviceHeight,
-        required this.buttonFunction,
-        required this.buttonTag});
+      required this.deviceWidth,
+      required this.deviceHeight,
+      required this.bgColor,
+      required this.textColor,
+      required this.buttonFunction,
+      required this.buttonTag});
 
   final double deviceWidth;
   final double deviceHeight;
   final VoidCallback buttonFunction;
   final String buttonTag;
+  final Color bgColor;
+  final Color textColor;
 
   @override
   Widget build(BuildContext context) {
@@ -24,13 +29,13 @@ class QuizButtons extends StatelessWidget {
             height: deviceHeight * 0.05,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              color: const Color.fromRGBO(6, 209, 243, 0.2),
+              color: bgColor,
             ),
             child: Center(
               child: Text(
                 buttonTag,
-                style: const TextStyle(
-                  color: Color.fromRGBO(6, 209, 243, 1),
+                style:  TextStyle(
+                  color:textColor,
                 ),
               ),
             ),
