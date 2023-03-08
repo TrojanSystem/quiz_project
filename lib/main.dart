@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:provider/provider.dart';
-
 import 'package:quiz_project/quiz_screens/quiz_homepage.dart';
-
 import 'data_room/data_storage.dart';
 
-void main() {
+void main() async {
+  await Hive.initFlutter('Hive Boxes');
   runApp(const QuizSplashScreen());
 }
 

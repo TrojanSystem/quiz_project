@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-
+import 'package:hive/hive.dart';
+import 'package:provider/provider.dart';
+import 'package:quiz_project/data_room/data_storage.dart';
 import 'package:quiz_project/quiz_constants.dart';
 
 Widget answer({answerColor, width, height}) => Container(
@@ -11,10 +13,12 @@ Widget answer({answerColor, width, height}) => Container(
 
 Widget selectedQuizHeader(
     {required double width,
+    required context,
     required double height,
     required question,
     required currentQuestion,
     required currentQuestionIndex}) {
+  final answered = Provider.of<DataStorage>(context).scoreKeeper;
   return Expanded(
     flex: 2,
     child: Column(
@@ -60,13 +64,8 @@ Widget selectedQuizHeader(
           height: height * 0.01,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
-            itemBuilder: (context, index) => answer(
-              answerColor:
-                  currentQuestionIndex == index ? Colors.white60 : Colors.red,
-              width: width,
-              height: height,
-            ),
-            itemCount: question.length,
+            itemCount: answered.length,
+            itemBuilder: (context, index) => answered[index],
           ),
         )
       ],

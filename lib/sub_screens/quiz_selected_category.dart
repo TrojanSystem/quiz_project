@@ -35,6 +35,7 @@ class QuizSelectedCategory extends StatelessWidget {
       body: Column(
         children: [
           selectedQuizHeader(
+            context: context,
             currentQuestionIndex: currentIndex + 1,
             width: width,
             height: height,
@@ -51,9 +52,11 @@ class QuizSelectedCategory extends StatelessWidget {
                     currentQuestion: currentIndex,
                   ),
                   SelectedCategoryAnswers(
+                    currentQuestionIndex: currentIndex,
                     width: width,
                     height: height,
                     quizAnswer: quizQuestion[currentIndex].incorrectAnswers,
+                    quizCorrectAnswer: quizQuestion[currentIndex].correctAnswer,
                   ),
                 ],
               ),

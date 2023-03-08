@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 class QuestionModel {
   String category;
   String type;
@@ -9,12 +11,12 @@ class QuestionModel {
 
   QuestionModel(
       {required this.category,
-        required this.correctAnswer,
-        required this.Score,
-        required this.difficulty,
-        required this.incorrectAnswers,
-        required this.question,
-        required this.type});
+      required this.correctAnswer,
+      required this.Score,
+      required this.difficulty,
+      required this.incorrectAnswers,
+      required this.question,
+      required this.type});
 
   static List<QuestionModel> questionList = [
     QuestionModel(
@@ -37,7 +39,7 @@ class QuestionModel {
       type: "multiple",
       difficulty: "medium",
       question:
-      "Which European city has the highest mileage of canals in the world?",
+          "Which European city has the highest mileage of canals in the world?",
       correctAnswer: "Birmingham",
       incorrectAnswers: [
         "Venice",
@@ -65,7 +67,7 @@ class QuestionModel {
         type: "multiple",
         difficulty: "easy",
         question:
-        "Which of these is the name of the largest city in the US state Tennessee?",
+            "Which of these is the name of the largest city in the US state Tennessee?",
         correctAnswer: "Memphis",
         incorrectAnswers: [
           "Thebes",
@@ -131,7 +133,7 @@ class QuestionModel {
         type: "multiple",
         difficulty: "hard",
         question:
-        '  What is the most common climbing route for the second highest mountain in the world, K2?',
+            '  What is the most common climbing route for the second highest mountain in the world, K2?',
         correctAnswer: "Abruzzi Spur",
         incorrectAnswers: [
           "Magic Line",
@@ -152,7 +154,7 @@ class QuestionModel {
           "Salton Sea",
           "Dead Sea",
         ]),
-    /***/QuestionModel(
+    /***/ QuestionModel(
       Score: 15,
       category: "Math",
       type: "multiple",
@@ -172,7 +174,7 @@ class QuestionModel {
       type: "multiple",
       difficulty: "medium",
       question:
-      "Which European city has the highest mileage of canals in the world?",
+          "Which European city has the highest mileage of canals in the world?",
       correctAnswer: "Birmingham",
       incorrectAnswers: [
         "Venice",
@@ -200,7 +202,7 @@ class QuestionModel {
         type: "multiple",
         difficulty: "easy",
         question:
-        "Which of these is the name of the largest city in the US state Tennessee?",
+            "Which of these is the name of the largest city in the US state Tennessee?",
         correctAnswer: "Memphis",
         incorrectAnswers: [
           "Thebes",
@@ -266,7 +268,7 @@ class QuestionModel {
         type: "multiple",
         difficulty: "hard",
         question:
-        '  What is the most common climbing route for the second highest mountain in the world, K2?',
+            '  What is the most common climbing route for the second highest mountain in the world, K2?',
         correctAnswer: "Abruzzi Spur",
         incorrectAnswers: [
           "Magic Line",
@@ -288,4 +290,32 @@ class QuestionModel {
           "Dead Sea",
         ]),
   ];
+}
+
+class Question {
+  int index;
+  Color questionColor;
+  bool isCorrect;
+
+  Question({
+    required this.isCorrect,
+    required this.index,
+    required this.questionColor,
+  });
+
+  Map<String, dynamic> toMap() {
+    return {
+      'index': index,
+      'questionColor': questionColor,
+      'isCorrect': isCorrect,
+    };
+  }
+
+  static Question fromMap(Map<String, dynamic> map) {
+    return Question(
+      index: map['index'],
+      questionColor: map['questionColor'],
+      isCorrect: map['isCorrect'],
+    );
+  }
 }

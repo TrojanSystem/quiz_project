@@ -3,6 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:quiz_project/data_room/data_storage.dart';
 import 'package:quiz_project/quiz_widgets/quiz_button.dart';
 
+import '../quiz_method_collection.dart';
+
 class SelectedCategoryFooter extends StatefulWidget {
   SelectedCategoryFooter({
     required this.height,
@@ -21,6 +23,8 @@ class SelectedCategoryFooter extends StatefulWidget {
 class _SelectedCategoryFooterState extends State<SelectedCategoryFooter> {
   @override
   Widget build(BuildContext context) {
+
+
     Future<bool> _onWillPop() async {
       return (await showDialog(
             context: context,
@@ -62,7 +66,7 @@ class _SelectedCategoryFooterState extends State<SelectedCategoryFooter> {
     return Expanded(
       flex: 2,
       child: Container(
-        margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
+        margin: const EdgeInsets.fromLTRB(20, 0, 20, 0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -92,10 +96,16 @@ class _SelectedCategoryFooterState extends State<SelectedCategoryFooter> {
                 deviceWidth: widget.width,
                 deviceHeight: widget.height,
                 buttonFunction: () {
-                 setState(() {
-                   Provider.of<DataStorage>(context, listen: false)
-                       .changeQuestion(widget.currentQuestion);
-                 });
+                  setState(() {
+                    Provider.of<DataStorage>(context, listen: false)
+                        .changeQuestion(widget.currentQuestion);
+                    Provider.of<DataStorage>(context, listen: false).score(
+                        answer(
+                          answerColor: Colors.white60,
+                          width: widget.width,
+                          height: widget.height*0.01,
+                        ));
+                  });
                 },
                 buttonTag: 'Next')
           ],
